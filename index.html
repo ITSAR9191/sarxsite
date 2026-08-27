@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>SARX — قريباً · Coming Soon</title>
+<meta name="description" content="SARX — نعمل على شيءٍ جديد. Something new is on the way. sarx.sa">
+<meta name="theme-color" content="#0A1F1A">
+<meta property="og:title" content="SARX — قريباً · Coming Soon">
+<meta property="og:description" content="نعمل على شيءٍ جديد — Something new is on the way.">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230A1F1A'/%3E%3Ctext x='32' y='45' font-family='Arial,Helvetica,sans-serif' font-size='38' font-weight='700' fill='%23C8A24B' text-anchor='middle'%3EX%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Hanken+Grotesk:wght@400;500;800&family=Reem+Kufi:wght@500;700&family=Tajawal:wght@300;400&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --night:#0A1F1A;
+    --pine:#123B2F;
+    --gold:#C8A24B;
+    --gold-2:#E6C87A;
+    --ivory:#F2EDE2;
+    --mist:rgba(242,237,226,.55);
+    --faint:rgba(242,237,226,.38);
+  }
+  *,*::before,*::after{ box-sizing:border-box; }
+  html,body{ height:100%; }
+  body{
+    margin:0;
+    min-height:100svh;
+    display:flex;
+    flex-direction:column;
+    background:
+      radial-gradient(120% 90% at 50% 0%, var(--pine) 0%, transparent 55%),
+      var(--night);
+    color:var(--ivory);
+    font-family:'Tajawal','Hanken Grotesk',system-ui,-apple-system,'Segoe UI',sans-serif;
+    overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;
+  }
+  /* faint film grain for materiality */
+  body::before{
+    content:"";
+    position:fixed; inset:0;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2'/%3E%3C/filter%3E%3Crect width='140' height='140' filter='url(%23n)' opacity='0.5'/%3E%3C/svg%3E");
+    opacity:.045;
+    pointer-events:none;
+  }
+
+  main{
+    flex:1;
+    display:grid;
+    place-items:center;
+    position:relative;
+    padding:32px 20px;
+  }
+  .halo{
+    position:absolute; inset:0;
+    background:radial-gradient(52% 40% at 50% 38%, rgba(200,162,75,.10), transparent 70%);
+    pointer-events:none;
+  }
+
+  .stack{
+    position:relative;
+    text-align:center;
+    display:grid;
+    justify-items:center;
+    gap:clamp(18px, 3.4vh, 30px);
+    max-width:820px;
+  }
+
+  /* Wordmark — SAR is the riyal code, the gold X is the exchange */
+  .brand{
+    direction:ltr;
+    font-family:'Hanken Grotesk',sans-serif;
+    font-weight:800;
+    font-size:clamp(58px, 15vw, 128px);
+    line-height:1;
+    letter-spacing:.16em;
+    padding-inline-start:.16em; /* optical centering for trailing tracking */
+    margin:0;
+    color:var(--ivory);
+  }
+  .brand .x{
+    color:var(--gold);
+    text-shadow:0 0 28px rgba(200,162,75,.35);
+  }
+
+  /* the rate line — hairline with a slow travelling glint */
+  .rule{
+    position:relative;
+    width:min(520px, 74vw);
+    height:1px;
+    background:linear-gradient(90deg, transparent, rgba(200,162,75,.55), transparent);
+  }
+  .rule::after{
+    content:"";
+    position:absolute;
+    top:-2px; left:0;
+    width:64px; height:5px;
+    border-radius:5px;
+    background:radial-gradient(closest-side, var(--gold-2), transparent);
+    transform:translateX(-50%);
+    animation:travel 7s ease-in-out infinite;
+  }
+  @keyframes travel{
+    0%   { left:6%;  opacity:0; }
+    12%  { opacity:1; }
+    88%  { opacity:1; }
+    100% { left:94%; opacity:0; }
+  }
+
+  h1{
+    font-family:'Reem Kufi','Tajawal',sans-serif;
+    font-weight:700;
+    font-size:clamp(44px, 9.5vw, 86px);
+    line-height:1.35;
+    margin:0;
+    color:var(--ivory);
+  }
+  .soon-en{
+    font-family:'Hanken Grotesk',sans-serif;
+    font-weight:500;
+    font-size:clamp(11px, 1.6vw, 13px);
+    letter-spacing:.46em;
+    padding-inline-start:.46em;
+    text-transform:uppercase;
+    color:var(--gold);
+    direction:ltr;
+    margin-top:-6px;
+  }
+
+  .note{
+    margin:0;
+    font-size:clamp(15px, 2vw, 17px);
+    color:var(--mist);
+    font-weight:300;
+    line-height:1.9;
+  }
+  .note .en{
+    font-family:'Hanken Grotesk',sans-serif;
+    font-weight:400;
+    direction:ltr;
+    display:inline-block;
+  }
+  .sep{ color:rgba(200,162,75,.6); margin-inline:.55em; }
+
+  .contact{
+    display:inline-flex;
+    align-items:baseline;
+    gap:.6em;
+    font-size:clamp(14px, 1.9vw, 16px);
+    color:var(--faint);
+  }
+  .contact a{
+    direction:ltr;
+    font-family:'Hanken Grotesk',sans-serif;
+    font-weight:500;
+    color:var(--gold-2);
+    text-decoration:none;
+    border-bottom:1px solid rgba(200,162,75,.35);
+    padding-bottom:2px;
+    transition:color .2s ease, border-color .2s ease;
+  }
+  .contact a:hover{ color:#fff; border-color:var(--gold-2); }
+  .contact a:focus-visible{
+    outline:2px solid var(--gold);
+    outline-offset:4px;
+    border-color:transparent;
+  }
+
+  footer{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px 24px;
+    justify-content:space-between;
+    padding:20px clamp(20px, 4vw, 44px) 26px;
+    font-size:12px;
+    letter-spacing:.08em;
+    color:var(--faint);
+  }
+  footer .ltr{ direction:ltr; font-family:'Hanken Grotesk',sans-serif; }
+  @media (max-width:560px){
+    footer{ justify-content:center; text-align:center; }
+  }
+
+  /* entrance */
+  .stack > *{
+    opacity:0;
+    transform:translateY(10px);
+    animation:rise .9s cubic-bezier(.2,.7,.2,1) forwards;
+  }
+  .stack > *:nth-child(1){ animation-delay:.05s; }
+  .stack > *:nth-child(2){ animation-delay:.25s; }
+  .stack > *:nth-child(3){ animation-delay:.40s; }
+  .stack > *:nth-child(4){ animation-delay:.52s; }
+  .stack > *:nth-child(5){ animation-delay:.64s; }
+  .stack > *:nth-child(6){ animation-delay:.76s; }
+  @keyframes rise{ to{ opacity:1; transform:none; } }
+
+  @media (prefers-reduced-motion:reduce){
+    .stack > *{ animation:none; opacity:1; transform:none; }
+    .rule::after{ animation:none; left:50%; opacity:.9; }
+  }
+</style>
+</head>
+<body>
+
+<main>
+  <div class="halo" aria-hidden="true"></div>
+  <div class="stack">
+    <p class="brand" lang="en">SAR<span class="x">X</span></p>
+    <div class="rule" aria-hidden="true"></div>
+    <h1>قريباً</h1>
+    <p class="soon-en" lang="en">Coming Soon</p>
+    <p class="note">
+      نعمل على شيءٍ جديد<span class="sep">·</span><span class="en" lang="en">Something new is on the way</span>
+    </p>
+    <p class="contact">
+      <span>للتواصل</span>
+      <a href="mailto:info@sarx.sa">info@sarx.sa</a>
+    </p>
+  </div>
+</main>
+
+<footer>
+  <span class="ltr">© 2026 SARX · sarx.sa</span>
+  <span>المملكة العربية السعودية <span class="ltr">· Saudi Arabia</span></span>
+</footer>
+
+</body>
+</html>
